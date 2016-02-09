@@ -1,0 +1,10 @@
+<div class="panel panel-default" data-id="<%= memory.id %>">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= memory.name %><%= link_to '<i class="fa fa-info-circle"></i>'.html_safe, admin_memory_path(memory) %> <%= link_to '<i class="fa fa-pencil-square-o"></i>'.html_safe, admin_edit_memory_path(memory) %> <%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, admin_destroy_memory_path(memory), method: :delete,  data: { confirm: 'Are you sure?' } %></h3>
+    <span>Location? <%= "Yes" if memory.location.present? %></span>
+  </div>
+  <div class="panel-body">
+  	<%= memory.priority %>
+    <%= truncate memory.content, length: 50 %>
+  </div>
+</div>

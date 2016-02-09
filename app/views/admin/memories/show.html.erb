@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-md-6" style="text-align: center;">
+    <h1><%= @memory.name %></h1>
+    <h5><%= @memory.location %></h5>
+    <p><%= @memory.content %></p>
+    <div>
+      <span><%= link_to "Edit memory", admin_edit_memory_path(@memory) %></span><span> |</span>
+      <span><%= link_to "Destroy memory", admin_destroy_memory_path(@memory), method: :delete,  data: { confirm: 'Are you sure?' } %></span>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div style="width: 100%;height: 500px" id="map"></div>
+  </div>
+</div>
+
+
+<script>
+$(document).ready(function() {
+  L.mapbox.accessToken = 'pk.eyJ1Ijoia2V2aW5qY29sZW1hbjciLCJhIjoiY2lrN29mcWRlMDIybXVua3RyY2VjcGZqaiJ9.G8ZC3oCreukIyVHftgWXCQ';
+  var map = L.mapbox.map('map', 'kevinjcoleman7.p3ocd38h').setView([<%= @memory.latitude %>, <%= @memory.longitude %>], 18 );
+  var myLayer = L.mapbox.featureLayer().addTo(map);
+  myLayer.on('layeradd', function(e) {
+    var marker, popupContent, properties;
+    marker = e.layer;
+    properties = marker.feature.properties;
+    popupContent = '<div class="popup"><h3>' + properties.name +'</h3>' + '</div>';
+    return marker.bindPopup(popupContent, {
+      closeButton: false,
+      minWidth: 300
+    });
+  });
+  $.ajax({
+    dataType: 'text',
+    url: '/admin/memories/<%= @memory.id %>.json',
+    success: function(data) {
+      var geojson;
+      geojson = $.parseJSON(data);
+      return myLayer.setGeoJSON(geojson);
+    }
+  });
+});
+</script>
