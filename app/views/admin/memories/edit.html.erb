@@ -9,7 +9,8 @@
     	<%= f.input :location, placeholder: 'Location' %>
     </div>
 </div>
-    <%= f.input :content, placeholder: 'Description' %>
+    <%= f.input :content, placeholder: 'Description', as: :bootsy %>
+
     <%= f.simple_fields_for @image do |i| %>
     	<%= i.file_field :image, :label => "Upload an image" %>
     <% end %>

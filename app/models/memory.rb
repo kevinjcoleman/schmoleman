@@ -13,7 +13,7 @@ class Memory < ActiveRecord::Base
 		    },
 		    properties: {
 		      name: self.name,
-		      :'marker-color' => '#333333',
+		      :'marker-color' => '#38ABD1',
 		      :'marker-symbol' => 'star-stroked',
 		      :'marker-size' => 'large'
 		    }

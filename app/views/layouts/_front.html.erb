@@ -20,7 +20,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body class="front">
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -28,9 +28,11 @@
         </div>
       </div>
     </nav>
+  </br>
     <div class="container">
       <%= render 'layouts/messages' %>
      <%= yield %>
+    <div class="footer">
     <% if current_user %>
       <p>Welcome back <%= current_user.email %>!
       <%= link_to "Admin dashboard", admin_path %>
@@ -38,6 +40,7 @@
     <% else %>
       <%= link_to "Log in", new_user_session_path %>
     <% end %>
+  </div>
     </div><!-- /.container -->
   </body>
 </html>

@@ -50,6 +50,10 @@ GEM
       sass (>= 3.3.4)
     bootswatch-rails (3.3.5)
       railties (>= 3.1)
+    bootsy (2.2.1)
+      carrierwave (~> 0.10)
+      mini_magick (~> 4.3)
+      remotipart (~> 1.2)
     builder (3.2.2)
     byebug (3.4.0)
       columnize (~> 0.8)
@@ -173,6 +177,7 @@ GEM
     mini_backtrace (0.1.3)
       minitest (> 1.2.0)
       rails (>= 2.3.3)
+    mini_magick (4.4.0)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     minitest-reporters (1.0.5)
@@ -234,6 +239,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.2.1)
       json (~> 1.4)
+    remotipart (1.2.1)
     responders (2.1.1)
       railties (>= 4.2.0, < 5.1)
     rspec (3.0.0)
@@ -315,6 +321,7 @@ DEPENDENCIES
   bcrypt
   bootstrap-sass
   bootswatch-rails
+  bootsy
   byebug (= 3.4.0)
   capybara
   carrierwave
@@ -332,6 +339,7 @@ DEPENDENCIES
   jquery-rails (= 4.0.3)
   launchy
   mini_backtrace (= 0.1.3)
+  mini_magick
   minitest-reporters (= 1.0.5)
   pg (= 0.17.1)
   pry

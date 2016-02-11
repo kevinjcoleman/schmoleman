@@ -2,7 +2,7 @@
   <div class="col-md-6" style="text-align: center;">
     <h1><%= @memory.name %></h1>
     <h5><%= @memory.location %></h5>
-    <p><%= @memory.content %></p>
+    <%= @memory.content.html_safe %>
     <div>
       <span><%= link_to "Edit memory", admin_edit_memory_path(@memory) %></span><span> |</span>
       <span><%= link_to "Destroy memory", admin_destroy_memory_path(@memory), method: :delete,  data: { confirm: 'Are you sure?' } %></span>

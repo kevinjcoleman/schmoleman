@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  resources :memories, only: [:show, :index]
+
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   namespace :admin do
   
   end

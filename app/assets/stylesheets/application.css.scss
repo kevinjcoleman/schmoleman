@@ -27,6 +27,7 @@ body { padding-top: 90px; }
 // And finally bootswatch style itself
 @import "bootswatch/journal/bootswatch";
 @import "font-awesome";
+@import "bootsy";
 
 // Whatever application styles you have go last
 
@@ -47,4 +48,13 @@ body { padding-top: 90px; }
 
 .sortable {
   display: list-item;
+}
+
+.front { padding-top: 50px; }
+
+.footer {
+	padding-top: 50px;
+    text-align: center;
+    border-top: #eeeeee solid 1px;
+    margin-top: 20px;
 }

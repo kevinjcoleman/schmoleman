@@ -19,6 +19,8 @@ gem 'geocoder'
 gem 'font-awesome-rails'
 gem 'carrierwave'
 gem "fog"
+gem 'bootsy'
+gem "mini_magick"
 
 
 group :development, :test do
