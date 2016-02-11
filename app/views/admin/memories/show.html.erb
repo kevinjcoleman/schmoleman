@@ -7,6 +7,18 @@
       <span><%= link_to "Edit memory", admin_edit_memory_path(@memory) %></span><span> |</span>
       <span><%= link_to "Destroy memory", admin_destroy_memory_path(@memory), method: :delete,  data: { confirm: 'Are you sure?' } %></span>
     </div>
+    <% if @memory.memory_images.any? %>
+      <div class="row">
+        <% @memory.memory_images.each do |memory_image| %>
+          <div class="col-md-4">
+            <a href="<%= memory_image.image.url %>" class="thumbnail">
+              <img src="<%= memory_image.image.url %>" style="width:100%;height:100%">
+            </a>
+            <%= link_to "Delete image", admin_memory_memory_image_path(id: memory_image.id, memory_id: @memory), method: :delete,  data: { confirm: 'Are you sure?' }  %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
   <div class="col-md-6">
     <div style="width: 100%;height: 500px" id="map"></div>

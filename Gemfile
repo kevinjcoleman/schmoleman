@@ -17,6 +17,8 @@ gem 'selenium-webdriver'
 gem 'bootswatch-rails'
 gem 'geocoder'
 gem 'font-awesome-rails'
+gem 'carrierwave'
+gem "fog"
 
 
 group :development, :test do

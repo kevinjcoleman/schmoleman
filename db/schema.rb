@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160209002133) do
+ActiveRecord::Schema.define(version: 20160209225628) do
 
   create_table "memories", force: :cascade do |t|
     t.text     "content"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20160209002133) do
     t.string   "name"
     t.integer  "priority"
   end
+
+  create_table "memory_images", force: :cascade do |t|
+    t.integer  "memory_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "image"
+  end
+
+  add_index "memory_images", ["memory_id"], name: "index_memory_images_on_memory_id"
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                          null: false
