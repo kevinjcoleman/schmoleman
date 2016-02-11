@@ -29,7 +29,7 @@ class Admin::MemoriesController < ApplicationController
   def update
     @memory = Memory.find(params[:id])
     @memory.update_attributes(memory_params)
-    if params[:memory][:memory_image][:image]
+    unless params[:memory][:memory_image].nil?
       @image = @memory.memory_images.new
       @image.image = params[:memory][:memory_image][:image]
       @image.save!
