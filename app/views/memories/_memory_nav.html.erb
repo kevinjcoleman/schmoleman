@@ -1,0 +1,14 @@
+<% if @memory.previous.nil? %>
+	<div class="col-md-1"></div>
+	<div class="col-md-10"><h2 style="text-align: center; margin-top: 10px;">Memories</h2></div>
+	<div class="col-md-1"><%= link_to "Next >", memory_path(@memory.next), class: "btn btn-primary btn-lg" %></div>
+
+<% elsif @memory.next.nil? %>
+			<div class="col-md-1"><%= link_to "< Previous", memory_path(@memory.previous), class: "btn btn-primary btn-lg" %></div>
+			<div class="col-md-10"><h2 style="text-align: center; margin-top: 10px;">Memories</h2></div>
+			<div class="col-md-1"></div>
+<% else %>
+			<div class="col-md-1"><%= link_to "< Previous", memory_path(@memory.previous), class: "btn btn-primary btn-lg" %></div>
+			<div class="col-md-10"><h2 style="text-align: center; margin-top: 10px;">Memories</h2></div>
+			<div class="col-md-1"><%= link_to "Next >", memory_path(@memory.next), class: "btn btn-primary btn-lg" %></div>
+<% end %>

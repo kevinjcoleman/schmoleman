@@ -20,4 +20,12 @@ class Memory < ActiveRecord::Base
 		  }
 		return geojson
 	end
+
+	def next
+		return Memory.find_by(priority: (self.priority + 1))
+	end
+
+	def previous
+		return Memory.find_by(priority: (self.priority - 1))
+	end
 end
