@@ -29,12 +29,19 @@ class Admin::MemoriesController < ApplicationController
   def update
     @memory = Memory.find(params[:id])
     @memory.update_attributes(memory_params)
+    if params[:memory][:memory_image][:image]
+      @image = @memory.memory_images.new
+      @image.image = params[:memory][:memory_image][:image]
+      @image.save!
+    end
     flash[:success] = "#{@memory.name} updated!"
     redirect_to admin_memory_path @memory
   end
 
   def edit
     @memory = Memory.find(params[:id])
+    @images = @memory.memory_images
+    @image = @memory.memory_images.new
   end
 
   def destroy

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   namespace :admin do
+  
+  end
+
+  namespace :admin do
   get 'memories/index'
   get 'memories/new'
   post 'memories/create'
@@ -9,10 +13,12 @@ Rails.application.routes.draw do
   get 'memories/:id', to: 'memories#show', as: 'memory'
   resources :memories do 
     put :sort, on: :collection
+    resources :memory_image, only: [:destroy]
   end
   end
 
 
+  
   devise_for :users
 
   root 'homepage#home'
