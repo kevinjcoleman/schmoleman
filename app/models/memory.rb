@@ -1,4 +1,5 @@
 class Memory < ActiveRecord::Base
+	before_create :set_priority
 	geocoded_by :location   # can also be an IP address
 	after_validation :geocode          # auto-fetch coordinates
 	has_many :memory_images
@@ -28,4 +29,10 @@ class Memory < ActiveRecord::Base
 	def previous
 		return Memory.find_by(priority: (self.priority - 1))
 	end
+
+	private 
+
+		def set_priority
+			self.priority = Memory.prioritized.count + 1
+		end
 end
