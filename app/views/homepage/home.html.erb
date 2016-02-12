@@ -1,8 +1,8 @@
-<div class="jumbotron" style="text-align: center;">
+<div class="jumbotron" style="text-align: center; height: 500px;">
                 <h1>Happy Valentines Day Nikki!</h1>
-                 <p>I made this site as a sort of virtual scrapbook,</p>
-                 <p>it's meant to showcase some of my favorite memories of us together</p>
-                 <p>We've had some pretty awesome times, and visited some amazing places with each other.</p><p><%= Time.local(2013, 8, 31, 20).ago_in_words %> I had no way of knowing that my life would be made wayyy better</p> <p>on that night of August 31st, 2013. </p>
+                 <p id="p1" style="display: none;">I made this site as a sort of virtual scrapbook,</p>
+                 <p id="p2" style="display: none;">it's meant to showcase some of my favorite memories of us together.</p>
+                 <p id="p3" style="display: none;">We've had some pretty awesome times, and visited some amazing places with each other.</p><p id="p4" style="display: none;"><%= Time.local(2013, 8, 31, 20).ago_in_words %> I had no way of knowing that my life would be changed forever</p> <p id="p5" style="display: none;">on that night of August 31st, 2013 and I'm so thankful that it did.</p>
                 <p><%= link_to "Take a trip down memory lane", memories_path, id: "memory_button", class: "btn btn-lg btn-primary", style: "display: none;" %></p>
 </div>
 
@@ -11,7 +11,22 @@
 <script>
 $(document).ready(function() {
 setTimeout(function () {
-    $("#memory_button").fadeIn(3000);
+    $("#p1").fadeIn(3000);
+  }, 500);
+setTimeout(function () {
+    $("#p2").fadeIn(3000);
+  }, 1000);
+setTimeout(function () {
+    $("#p3").fadeIn(3000);
+  }, 1500);
+setTimeout(function () {
+    $("#p4").fadeIn(3000);
   }, 2000);
+setTimeout(function () {
+    $("#p5").fadeIn(3000);
+  }, 2500);
+setTimeout(function () {
+    $("#memory_button").fadeIn(3000);
+  }, 3000);
 });
 </script>
