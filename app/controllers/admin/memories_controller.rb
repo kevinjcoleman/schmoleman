@@ -64,6 +64,6 @@ class Admin::MemoriesController < ApplicationController
     end
 
     def memory_params
-      params.require(:memory).permit(:location, :content, :name)
+      params.require(:memory).permit(:location, :content, :name, :longitude, :latitude)
     end
 end

@@ -9,6 +9,14 @@
     	<%= f.input :location, placeholder: 'Location' %>
     </div>
 </div>
+ <div class="row">
+    <div class="col-md-6">
+      <%= f.input :longitude, placeholder: 'Long' %>
+  </div>
+    <div class="col-md-6">
+      <%= f.input :latitude, placeholder: 'Lat' %>
+    </div>
+</div>
     <%= f.input :content, placeholder: 'Description', as: :bootsy %>
 
     <%= f.simple_fields_for @image do |i| %>
