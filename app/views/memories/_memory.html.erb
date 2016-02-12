@@ -1,0 +1,78 @@
+<h1 style="text-align: center;"><%= memory.name %></h1>
+<div style="text-align: center; padding-bottom: 25px; border-bottom: solid 1px #eeeeee;">
+	<%= memory.content.html_safe %>
+</div>
+</br>
+<div class="row">
+  <div class="col-md-6" style="text-align: center;">
+    <% if memory.memory_images.any? %> <!-- Add in logic that doesn't render carousel if there's only one image. -->
+		<% if memory.memory_images.count > 1 %>
+	    	<div id="myCarousel" class="carousel slide" data-ride="carousel" >
+				  <!-- Indicators -->
+				  <ol class="carousel-indicators">
+				  	<% i = 0 %>
+				  	<% memory.memory_images.each do |memory_image| %>
+					    <li data-target="#myCarousel" data-slide-to="<%= i %>" class="<%= "active" if i == 0 %>"></li>
+					    <% i += 1 %>
+					<% end %>
+				  </ol>
+				  <!-- Wrapper for slides -->
+				  <div class="carousel-inner" role="listbox">
+				  	<% count = 0 %>
+				  	<% memory.memory_images.each do |memory_image| %>
+						<div class="item <%= "active" if count == 0 %>">
+					      <img class="img-responsive" src="<%= memory_image.image.url %>">
+					    </div>
+					    <% count += 1 %>
+					<% end %>
+				  </div>
+				  <!-- Left and right controls -->
+				  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				    <span class="sr-only">Previous</span>
+				  </a>
+				  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				    <span class="sr-only">Next</span>
+				  </a>
+			</div>
+		<% else %>
+			<img class="img-responsive" src="<%= memory.memory_images.first.image.url %>"> 
+		<% end %>
+	<% end %>
+    </div>
+  <div class="col-md-6">
+    <div style="width: 100%;height: 500px" id="map"></div>
+  </div>
+</div>
+<div class="row memory-nav">
+	<%= render 'memory_nav' %>
+</div>
+
+
+<script>
+$(document).ready(function() {
+  L.mapbox.accessToken = 'pk.eyJ1Ijoia2V2aW5qY29sZW1hbjciLCJhIjoiY2lrN29mcWRlMDIybXVua3RyY2VjcGZqaiJ9.G8ZC3oCreukIyVHftgWXCQ';
+  var map = L.mapbox.map('map', 'kevinjcoleman7.p3ocd38h').setView([<%= memory.latitude %>, <%= memory.longitude %>], 18 );
+  var myLayer = L.mapbox.featureLayer().addTo(map);
+  myLayer.on('layeradd', function(e) {
+    var marker, popupContent, properties;
+    marker = e.layer;
+    properties = marker.feature.properties;
+    popupContent = '<div class="popup"><h3>' + properties.name +'</h3>' + '</div>';
+    return marker.bindPopup(popupContent, {
+      closeButton: false,
+      minWidth: 300
+    });
+  });
+  $.ajax({
+    dataType: 'text',
+    url: '/memories/<%= memory.id %>.json',
+    success: function(data) {
+      var geojson;
+      geojson = $.parseJSON(data);
+      return myLayer.setGeoJSON(geojson);
+    }
+  });
+});
+</script>
