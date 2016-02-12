@@ -1,7 +1,7 @@
    <script>
         $(function() {
             $("#typed").typed({
-                strings: ["I made this site as a sort of virtual scrapbook,\n it's meant to showcase some of my favorite memories of us together.\n We've had some pretty awesome times, and visited some amazing places with each other.\n <%= Time.local(2013, 8, 31, 20).ago_in_words %> I had no way of knowing that my life would be made wayyy better\n on that night of August 31st, 2013. "],
+                strings: [],
                 typeSpeed: 1,
                 backDelay: 1,
                 loop: false,
@@ -29,7 +29,9 @@
 
 <div class="jumbotron" style="text-align: center;">
                 <h1>Happy Valentines Day Nikki!</h1>
-                 <p><span id="typed" style="white-space:pre;"></span></p>
+                 <p>I made this site as a sort of virtual scrapbook,</p>
+                 <p>it's meant to showcase some of my favorite memories of us together</p>
+                 <p>We've had some pretty awesome times, and visited some amazing places with each other.</p><p><%= Time.local(2013, 8, 31, 20).ago_in_words %> I had no way of knowing that my life would be made wayyy better</p> <p>on that night of August 31st, 2013. </p>
                 <p><%= link_to "Take a trip down memory lane", memories_path, id: "memory_button", class: "btn btn-lg btn-primary", style: "display: none;" %></p>
 </div>
 
@@ -39,6 +41,6 @@
 $(document).ready(function() {
 setTimeout(function () {
     $("#memory_button").fadeIn(3000);
-  }, 18000);
+  }, 2000);
 });
 </script>
