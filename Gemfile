@@ -21,6 +21,7 @@ gem 'carrierwave'
 gem "fog"
 gem 'bootsy'
 gem "mini_magick"
+gem 'time_ago_in_words'
 
 
 group :development, :test do
