@@ -1,3 +1,72 @@
+<script>
+    (function() {
+        var script = document.createElement("script");
+
+        script.type = "text/javascript";
+        script.async = true;
+        script.src = "//sd.toneden.io/production/v2/toneden.loader.js";
+
+        var entry = document.getElementsByTagName("script")[0];
+        entry.parentNode.insertBefore(script, entry);
+    }());
+
+    ToneDenReady = window.ToneDenReady || [];
+    ToneDenReady.push(function() {
+        ToneDen.configure({
+            soundcloudConsumerKey: 'b2506665170d62f572895405ed7f9640'
+        });
+        // Modify the dom and urls parameters to position
+        // your player and select tracks/sets/artists to play.
+        ToneDen.player.create({
+            dom: "#player",
+            skin: "dark",
+            single: "true",
+            mini: "true",
+            urls: [
+                "https://soundcloud.com/jackjohnsonmusic/i-got-you"
+            ]
+
+        });
+    });
+</script>
+
 <div style="transition: all 3s ease;" id="memory-container">
 	<%= render @memory %>
 </div>
+
+<div id="player" style="display:none;"></div>
+
+<script>
+    (function() {
+        var script = document.createElement("script");
+
+        script.type = "text/javascript";
+        script.async = true;
+        script.src = "//sd.toneden.io/production/v2/toneden.loader.js";
+
+        var entry = document.getElementsByTagName("script")[0];
+        entry.parentNode.insertBefore(script, entry);
+    }());
+
+    ToneDenReady = window.ToneDenReady || [];
+    ToneDenReady.push(function() {
+        ToneDen.configure({
+            soundcloudConsumerKey: 'b2506665170d62f572895405ed7f9640'
+        });
+        // Modify the dom and urls parameters to position
+        // your player and select tracks/sets/artists to play.
+        ToneDen.player.create({
+            dom: "#player",
+            skin: "dark",
+            mini: "true",
+            urls: [
+                "https://soundcloud.com/johnlegend/all-of-me-3"
+            ]
+
+        });
+        ToneDen.player.getInstanceByDom("#player").togglePause(false);
+    });
+</script>
+
+
+
