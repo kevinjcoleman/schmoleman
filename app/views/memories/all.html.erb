@@ -1,0 +1,34 @@
+<h1 style="text-align: center;">We've been all of the world together and we have so many more places left to explore!</h1>
+</br>
+<div class="row">
+    <div style="width: 100%;height: 700px" id="map"></div>
+</div>
+
+
+
+<script>
+$(document).ready(function() {
+  L.mapbox.accessToken = 'pk.eyJ1Ijoia2V2aW5qY29sZW1hbjciLCJhIjoiY2lrN29mcWRlMDIybXVua3RyY2VjcGZqaiJ9.G8ZC3oCreukIyVHftgWXCQ';
+  var map = L.mapbox.map('map', 'kevinjcoleman7.p3ocd38h').setView( [0.0, 0.0], 2 );
+  var myLayer = L.mapbox.featureLayer().addTo(map);
+  myLayer.on('layeradd', function(e) {
+    var marker, popupContent, properties;
+    marker = e.layer;
+    properties = marker.feature.properties;
+    popupContent = '<div class="popup"><h3>' + properties.name +'</h3>' + '</div>';
+    return marker.bindPopup(popupContent, {
+      closeButton: false,
+      minWidth: 300
+    });
+  });
+  $.ajax({
+    dataType: 'text',
+    url: '/all_memories.json',
+    success: function(data) {
+      var geojson;
+      geojson = $.parseJSON(data);
+      return myLayer.setGeoJSON(geojson);
+    }
+  });
+});
+</script>

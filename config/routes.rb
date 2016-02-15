@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   resources :memories, only: [:show, :index]
 
+  get "all_memories", to: 'memories#all', as: "all_memories"
+
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   namespace :admin do
   

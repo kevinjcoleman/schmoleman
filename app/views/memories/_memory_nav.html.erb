@@ -1,14 +1,13 @@
 <% if @memory.previous.nil? %>
-	<div class="col-md-1"></div>
-	<div class="col-md-10"><h2 style="text-align: center; margin-top: 10px;">Memories</h2></div>
-	<div class="col-md-1"><%= link_to "Next >", memory_path(@memory.next), class: "btn btn-primary btn-lg", remote: true %></div>
-
+	<div class="col-md-2"></div>
+	<div class="col-md-8"><h2 style="text-align: center; margin-top: 10px;">Memories</h2></div>
+	<div class="col-md-2"><%= link_to 'Next <i class="fa fa-chevron-right"></i>'.html_safe, memory_path(@memory.next), class: "btn btn-primary btn-lg memory-btn", remote: true %></div>
 <% elsif @memory.next.nil? %>
-			<div class="col-md-1"><%= link_to "< Previous", memory_path(@memory.previous), class: "btn btn-primary btn-lg", remote: true %></div>
-			<div class="col-md-10"><h2 style="text-align: center; margin-top: 10px;">Memories</h2></div>
-			<div class="col-md-1"></div>
+			<div class="col-md-2"><%= link_to '<i class="fa fa-chevron-left"></i> Previous'.html_safe, memory_path(@memory.previous), class: "btn btn-primary btn-lg memory-btn", remote: true %></div>
+			<div class="col-md-8"><h2 style="text-align: center; margin-top: 10px;">Memories</h2></div>
+			<div class="col-md-2"><%= link_to '<i class="fa fa-map-o"></i> All memories'.html_safe, all_memories_path, class: "btn btn-info btn-lg memory-btn" %></div>
 <% else %>
-			<div class="col-md-1"><%= link_to "< Previous", memory_path(@memory.previous), class: "btn btn-primary btn-lg", remote: true %></div>
-			<div class="col-md-10"><h2 style="text-align: center; margin-top: 10px;">Memories</h2></div>
-			<div class="col-md-1"><%= link_to "Next >", memory_path(@memory.next), class: "btn btn-primary btn-lg", remote: true %></div>
+			<div class="col-md-2"><%= link_to '<i class="fa fa-chevron-left"></i> Previous'.html_safe, memory_path(@memory.previous), class: "btn btn-primary btn-lg memory-btn", remote: true %></div>
+			<div class="col-md-8"><h2 style="text-align: center; margin-top: 10px;">Memories</h2></div>
+			<div class="col-md-2"><%= link_to 'Next <i class="fa fa-chevron-right"></i>'.html_safe, memory_path(@memory.next), class: "btn btn-primary btn-lg memory-btn", remote: true %></div>
 <% end %>

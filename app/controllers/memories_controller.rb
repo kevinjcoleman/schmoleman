@@ -15,4 +15,15 @@ class MemoriesController < ApplicationController
   def index
   	@memory = Memory.prioritized.first
   end
+
+
+  def all
+    @memories = Memory.all
+    @geojson = Array.new
+    @memories.each {|d| @geojson << d.geojsonify }
+    respond_to do |format|
+      format.json { render json: @geojson }  # respond with the created JSON object
+      format.html
+    end
+  end
 end
